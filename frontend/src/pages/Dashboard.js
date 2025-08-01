@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import API_BASE_URL from '../api';  // ← import here
 import '../App.css';
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/user')
+    axios.get(`${API_BASE_URL}/api/user`)
       .then(res => setUser(res.data))
       .catch(err => console.error(err));
   }, []);

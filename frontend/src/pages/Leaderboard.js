@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import API_BASE_URL from '../api';  // ← import here
 import '../App.css';
 
 const Leaderboard = () => {
   const [leaders, setLeaders] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/leaderboard')
+    axios.get(`${API_BASE_URL}/api/leaderboard`)
       .then(res => setLeaders(res.data))
       .catch(err => console.error(err));
   }, []);
